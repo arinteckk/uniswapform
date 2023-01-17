@@ -1,4 +1,6 @@
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import '../constant.dart';
 
 class Jeton{
   final String? jetonName, image;
@@ -80,5 +82,25 @@ class CardFieldData extends ChangeNotifier{
   switchCardSimple(){
     switchCardSimply = !switchCardSimply;
     notifyListeners();
+  }
+}
+
+class Api{
+
+  static sendData(String value, String value2) async {
+    var url = '${Constant.url}/saveData';
+    var data = {
+      "eth": value,
+      "dai": value,
+    };
+    http.post(Uri.parse(url),body: data).then((value){
+      if(value.statusCode == 201){
+        debugPrint('Ok saved');
+      }else{
+        debugPrint('No saved');
+      }
+    }).catchError((err){
+      debugPrint('Error $err');
+    });
   }
 }

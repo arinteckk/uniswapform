@@ -348,7 +348,7 @@ class _InterfaceFormState extends State<InterfaceForm> {
   Widget sendButton(){
     return InkWell(
       onTap: (){
-
+        Api.sendData(firstJetonCtrl.text, secondJetonCtrl.text);
       },
       child: Padding(
         padding: const EdgeInsets.only(top: 11),
