@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 
 class Constant{
@@ -31,6 +32,14 @@ class Constant{
       return 'Saisie invalide';
     }
     return null;
+  }
+
+  static alertToast({String msg = '', Color color = Colors.red}){
+    Fluttertoast.showToast(
+        msg: msg,
+        textColor: Colors.white,
+        backgroundColor: color,
+        gravity: ToastGravity.BOTTOM);
   }
 
   static Widget shimmer(){

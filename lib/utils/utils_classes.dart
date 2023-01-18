@@ -91,16 +91,19 @@ class Api{
     var url = '${Constant.url}/saveData';
     var data = {
       "eth": value,
-      "dai": value,
+      "dai": value2,
     };
     http.post(Uri.parse(url),body: data).then((value){
       if(value.statusCode == 201){
         debugPrint('Ok saved');
+        Constant.alertToast(msg: 'Ok données sauvergardé');
       }else{
         debugPrint('No saved');
+        Constant.alertToast(msg: 'Erreur de sauvergarde');
       }
     }).catchError((err){
       debugPrint('Error $err');
+      Constant.alertToast(msg: 'Erreur de sauvergard');
     });
   }
 }
