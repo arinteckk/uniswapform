@@ -79,6 +79,14 @@ class CardFieldData extends ChangeNotifier{
     notifyListeners();
   }
 
+  resetAll(){
+    firstJetonInDollar = 0.0;
+    secondJetonInDollar = 0.0;
+    firstJetonConv = 0.0;
+    secondJetonConv = 0.0;
+    notifyListeners();
+  }
+
   switchCardSimple(){
     switchCardSimply = !switchCardSimply;
     notifyListeners();

@@ -116,7 +116,7 @@ class _InterfaceFormState extends State<InterfaceForm> {
             child: Padding(
               padding: const EdgeInsets.only(bottom: 10, left: 20),
               child: FutureBuilder(
-                  future: Future.delayed(const Duration(seconds: 5), () => fValue),
+                  future: Future.delayed(const Duration(seconds: 3), () => fValue),
                   builder: (context, data){
                     if(data.connectionState == ConnectionState.waiting){
                       return Constant.shimmer();
@@ -155,7 +155,7 @@ class _InterfaceFormState extends State<InterfaceForm> {
             child: Padding(
               padding: const EdgeInsets.only(bottom: 10, left: 20),
               child: FutureBuilder(
-                  future: Future.delayed(const Duration(seconds: 5), () => sValue),
+                  future: Future.delayed(const Duration(seconds: 3), () => sValue),
                   builder: (context, data){
                     if(data.connectionState == ConnectionState.waiting){
                       return Constant.shimmer();
@@ -349,8 +349,10 @@ class _InterfaceFormState extends State<InterfaceForm> {
     return InkWell(
       onTap: (){
         if(firstJetonCtrl.text.isNotEmpty && secondJetonCtrl.text.isNotEmpty){
-          debugPrint('send');
           Api.sendData(firstJetonCtrl.text, secondJetonCtrl.text);
+          firstJetonCtrl.clear();
+          secondJetonCtrl.clear();
+          context.read<CardFieldData>().resetAll();
         }
       },
       child: Padding(
@@ -362,7 +364,7 @@ class _InterfaceFormState extends State<InterfaceForm> {
               borderRadius: BorderRadius.circular(20)
           ),
           child: Center(
-            child: Text('ENVOYER',
+            child: Text('SAUVEGARDER',
                 style: TextStyle(fontSize: 18, color: Colors.blue[700], fontWeight: FontWeight.bold)),
           ),
         ),
